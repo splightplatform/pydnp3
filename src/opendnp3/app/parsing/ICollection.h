@@ -166,6 +166,7 @@ void declareICollection(py::module &m, string const & type)
         .def(
             "Foreach",
             &opendnp3::ICollection<T>::Foreach,
+            py::call_guard<py::gil_scoped_release>(),
             "Visit all the elements of a collection.",
             py::arg("visitor")
         )
@@ -184,6 +185,7 @@ void declareICollection(py::module &m, string const & type)
                 opendnp3::FunctorVisitor<T, Fun> visitor(fun);
                 self.Foreach(visitor);
             },
+            py::call_guard<py::gil_scoped_release>(),
             "Visit all of the elements of a collection.",
             py::arg("callback")
         );
