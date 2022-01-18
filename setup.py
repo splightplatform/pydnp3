@@ -62,7 +62,7 @@ class CMakeBuild(build_ext):
         subprocess.check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
 
 setup(
-    name='splight-pydnp3',
+    name='pydnp3',
     version=__version__,
     author='Anh Nguyen',
     author_email='anh@kisensum.com',
