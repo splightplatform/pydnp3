@@ -7,7 +7,12 @@ pipelines:
           script:
             - git submodule update --init --recursive
             - apt update && apt -y install cmake
-            - printf "[distutils]\nindex-servers=splightlib\n[splightlib]\nrepository:https://splight.jfrog.io/artifactory/api/pypi/testjfrog-pypi\nusername=bot@splight-ae.com\npassword=N0us4rExcl4maci0n" >> ~/.pypirc
+            - printf "[distutils]\n" >> ~/.pypirc
+            - printf "index-servers=splightlib\n" >> ~/.pypirc
+            - printf "[splightlib]\n" >> ~/.pypirc
+            - printf "repository:https://splight.jfrog.io/artifactory/api/pypi/splight-local\n" >> ~/.pypirc
+            - printf "username=bot@splight-ae.com\n" >> ~/.pypirc
+            - printf "password=N0us4rExcl4maci0n" >> ~/.pypirc
             - python setup.py bdist_wheel upload -r splightlib
             - rm ~/.pypirc;
     main: *shared
