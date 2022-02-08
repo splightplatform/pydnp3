@@ -11,8 +11,8 @@ pipelines:
             - printf "index-servers=splightlib\n" >> ~/.pypirc
             - printf "[splightlib]\n" >> ~/.pypirc
             - printf "repository:https://splight.jfrog.io/artifactory/api/pypi/splight-local\n" >> ~/.pypirc
-            - printf "username=bot@splight-ae.com\n" >> ~/.pypirc
-            - printf "password=N0us4rExcl4maci0n" >> ~/.pypirc
+            - printf "username=$JFROG_BOT_USERNAME\n" >> ~/.pypirc
+            - printf "password=$JFROG_BOT_PASS" >> ~/.pypirc
             - python setup.py bdist_wheel upload -r splightlib
             - rm ~/.pypirc;
     main: *shared
